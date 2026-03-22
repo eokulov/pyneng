@@ -49,3 +49,52 @@ bin_ip = "00001010000000010000000111000011"
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+
+
+
+
+
+ip_network = input ("Введите ип сеть: ")
+
+network = ip_network.split("/")
+ip = network[0]
+mask = int(network[1])
+
+oct1, oct2, oct3, oct4 = ip.split(".")
+
+oct1 = int(oct1)
+oct2 = int(oct2)
+oct3 = int(oct3)
+oct4 = int(oct4)
+
+
+mask_bin = "1" * mask + "0" * (32 - mask)
+
+
+octm1 = mask_bin[0:8]
+octm2 = mask_bin[8:16]
+octm3 = mask_bin[16:24]
+octm4 = mask_bin[24:32]
+
+
+octm1 = int(octm1, 2)
+octm2 = int(octm2, 2)
+octm3 = int(octm3, 2)
+octm4 = int(octm4, 2)
+
+
+bin_ip= '{:08b}{:08b}{:08b}{:08b}'.format(oct1, oct2, oct3, oct4)
+bin_network = bin_ip[0:mask] + "0" * (32 - mask)
+
+network_oct1, network_oct2, network_oct3, network_oct4 = [
+    int(bin_network[0:8], 2),
+    int(bin_network[8:16], 2),
+    int(bin_network[16:24], 2),
+    int(bin_network[24:32], 2),
+]
+
+
+print("Network: \n"f"{network_oct1:<10} {network_oct2:<10} {network_oct3:<10} {network_oct4:<10}\n{network_oct1:08b}   {network_oct2:08b}   {network_oct3:08b}   {network_oct4:08b}")
+print("Mask: \n" f"/{mask}\n{octm1:<10} {octm2:<10} {octm3:<10} {octm4:<10}\n{octm1:08b}   {octm2:08b}   {octm3:08b}   {octm4:08b}")
+
+

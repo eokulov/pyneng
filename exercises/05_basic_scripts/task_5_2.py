@@ -30,3 +30,37 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+
+
+ip_network = input ("Введите ип сеть: ")
+
+network = ip_network.split("/")
+ip = network[0]
+mask = network[1]
+
+oct1, oct2, oct3, oct4 = ip.split(".")
+
+oct1 = int(oct1)
+oct2 = int(oct2)
+oct3 = int(oct3)
+oct4 = int(oct4)
+
+print("Network: \n"f"{oct1:<10} {oct2:<10} {oct3:<10} {oct4:<10}\n{oct1:08b}   {oct2:08b}   {oct3:08b}   {oct4:08b}")
+
+mask_bin = "1" * int(mask) + "0" * (32 - int(mask))
+
+
+octm1 = mask_bin[0:8]
+octm2 = mask_bin[8:16]
+octm3 = mask_bin[16:24]
+octm4 = mask_bin[24:32]
+
+
+octm1 = int(octm1, 2)
+octm2 = int(octm2, 2)
+octm3 = int(octm3, 2)
+octm4 = int(octm4, 2)
+
+
+print("Mask: \n" f"/{mask}\n{octm1:<10} {octm2:<10} {octm3:<10} {octm4:<10}\n{octm1:08b}   {octm2:08b}   {octm3:08b}   {octm4:08b}")
+
