@@ -12,3 +12,20 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+
+
+
+ip_adr = input("Ввердите ип адрес: ")
+
+octets = ip_adr.split(".")
+
+if int(octets[0]) <= 223 and int(octets[0]) > 0:
+    print ("unicast")
+elif int(octets[0]) > 225 and int(octets[0]) <= 239:
+    print ("multicast")
+elif octets == ['255','255','255','255']:
+    print ("local broadcast")
+elif octets == ['0','0','0','0']:
+    print ('unassigned')
+else :
+    print ('unused')
