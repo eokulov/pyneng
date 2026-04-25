@@ -16,4 +16,26 @@
 
 """
 
+
+#with open('config_sw1.txt') as src,  open('result.txt', 'w') as dest:
+#    for line in src:       
+#        if not line.startswith('!'):
+#            line_list = line.split()
+#            if list(set(line_list) & set(ignore)) == []:
+#                dest.write(line)
+#
+
+from sys import argv
+
 ignore = ["duplex", "alias", "configuration"]
+
+src_file = argv[1]
+dst_file = argv[2]
+
+with open(src_file) as src, open(dst_file, 'w') as dst:
+    for line in src:
+        words = line.split()
+        words_intersect = set(words) & set(ignore)
+        if not line.startswith("!") and not words_intersect:
+            dst.write(line)
+        

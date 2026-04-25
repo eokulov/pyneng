@@ -20,3 +20,17 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+
+
+
+with open('CAM_table.txt') as f:
+    for line in f: 
+        line_list = line.strip('-').split()
+        result_list = []
+        #print(line_list)
+        if len(line_list) == 4:
+            result_list.append(line_list)
+            result_list[0].pop(2)
+            vlan, mac, intf = result_list[0]
+            print(f'{vlan:8} {mac:20} {intf:10}')
+

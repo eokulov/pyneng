@@ -40,3 +40,28 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+
+
+with open('CAM_table.txt') as f:
+    result_list = []
+    vlans = []
+    for line in f: 
+        line_list = line.strip('-').split()
+        #print(line_list)
+        if len(line_list) == 4:
+            line_list.pop(2)
+            line_list[0] = int(line_list[0])
+            result_list.append(line_list)
+            
+    #print(result_list)
+            #vlan, mac, intf = line_list
+            #print(f'{vlan:8} {mac:20} {intf:10}')
+
+    #result_list.sort(key=None)
+    result_list = sorted(result_list)
+    #print (result_list)
+    for sring in result_list:
+        vlan, mac, intf = sring
+        vlans.append(vlan)
+        print(f'{vlan:<8} {mac:20} {intf:10}')
+        

@@ -17,3 +17,21 @@
 """
 
 ignore = ["duplex", "alias", "configuration"]
+
+
+
+#file_name = input('Введите имя файла: ')
+
+with open('config_sw1.txt') as f:
+    for line in f: 
+        
+        if not line.startswith('!'):
+            line_list = line.split()
+            if list(set(line_list) & set(ignore)) == []:
+                print (line.rstrip())
+            
+            
+        
+        
+        
+        
